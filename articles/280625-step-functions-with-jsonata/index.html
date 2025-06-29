@@ -77,9 +77,9 @@ read. With JSONata we can transform or select the data in both fields
 (Arguments and/or Output), making it extremely flexible!</p><p>Let&rsquo;s look at another example, where using JSONata has a bigger impact.</p><h4 id=dynamodb-ttl-with-jsonata>DynamoDB TTL with JSONata</h4><p>When using DynamoDB and Step Functions, you might find yourself in the need of
 defining a Time to Live (TTL) timestamp to automatically delete expired items
 from a DynamoDB table.
-To define the TTL when using JSONPath, you could use a solution like described
+When using JSONPath, you could use a solution like described
 <a href=https://stackoverflow.com/questions/71062442/how-to-get-epoch-time-in-aws-step-function>here</a>,
-which requires an invocation to a Lambda to obtain the desired timestamp:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>EpochExecutionTimeLambda </span>: {
+which requires an invocation to a Lambda to obtain the required timestamp:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>EpochExecutionTimeLambda </span>: {
 </span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;Type&#34;: </span><span style=color:#e6db74>&#34;Task&#34;</span>,
 </span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;ResultPath&#34;: </span><span style=color:#e6db74>&#34;$.epoch&#34;</span>,
 </span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;Resource&#34;: </span><span style=color:#e6db74>&#34;arn:aws:lambda:us-east-1:...&#34;</span>,
@@ -111,7 +111,7 @@ which requires an invocation to a Lambda to obtain the desired timestamp:</p><di
 </span></span><span style=display:flex><span>  },
 </span></span><span style=display:flex><span>  <span style=color:#f92672>End </span>: <span style=color:#66d9ef>true</span>
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>If we now look at <a href=https://docs.jsonata.org/date-time>JSONata date time functions</a>,
+</span></span></code></pre></div><p>But if instead, we now look at the <a href=https://docs.jsonata.org/date-time>JSONata date time functions</a>,
 we can use the <code>$millis()</code> and numeric operators to easily obtain the desired
 timestamp.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>UpdateState </span>: {
 </span></span><span style=display:flex><span>  <span style=color:#f92672>Type </span>: <span style=color:#e6db74>&#34;Task&#34;</span>,
