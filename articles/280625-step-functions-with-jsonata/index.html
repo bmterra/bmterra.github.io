@@ -75,8 +75,8 @@ simplifying the workflow definition.</p><div class=highlight><pre tabindex=0 sty
 to two fields, in most states: <code>Arguments</code> and <code>Output</code>.</p><p>The &lsquo;$.&rsquo; on JSON object key names is also gone, making the definition easier to
 read. With JSONata we can transform or select the data in both fields
 (Arguments and/or Output), making it extremely flexible!</p><p>Let&rsquo;s look at another example, where using JSONata has a bigger impact.</p><h4 id=dynamodb-ttl-with-jsonata>DynamoDB TTL with JSONata</h4><p>When using DynamoDB and Step Functions, you might find yourself in the need of
-defining the Time to Live (TTL) to automatically delete expired items from a
-DynamoDB table, based on a specified expiration timestamp.
+defining a Time to Live (TTL) timestamp to automatically delete expired items
+from a DynamoDB table.
 To define the TTL when using JSONPath, you could use a solution like described
 <a href=https://stackoverflow.com/questions/71062442/how-to-get-epoch-time-in-aws-step-function>here</a>,
 which requires an invocation to a Lambda to obtain the desired timestamp:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>EpochExecutionTimeLambda </span>: {
